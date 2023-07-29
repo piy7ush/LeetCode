@@ -22,9 +22,9 @@ public:
 
         for(int i =0;i<prices.size();i++){
             minum=min(minum,prices[i]);
-            if(prices[i]>minum){
+            //if(prices[i]>minum){
                 maxim=max(maxim,prices[i]-minum);
-            }
+            // }
         }
         return maxim;
     }
