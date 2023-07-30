@@ -13,14 +13,19 @@ public:
                 b.push_back(nums[i]);
             }
         }
-        vector<int>ans(nums.size());
-        int count =0;
-        for(int i =0;i<a.size();i++){
-            ans[count]=a[i];
-            count++;
-            ans[count]=b[i];
-            count++;
-        }
-        return ans;    
+        // vector<int>ans(nums.size());
+        // int count =0;
+        // for(int i =0;i<a.size();i++){
+        //     ans[count]=a[i];
+        //     count++;
+        //     ans[count]=b[i];
+        //     count++;
+        // }
+        // return ans;
+        for(int i=0;i<n/2;i++){
+            nums[2*i]=a[i];
+            nums[2*i+1]=b[i];
+        } 
+        return nums;   
     }
 };
