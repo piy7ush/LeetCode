@@ -5,7 +5,7 @@ public:
         for(auto X:arr){
             mp[X]++;
         }
-        for(int i=1;i<=2000;i++){
+        for(int i=1;i<=2001;i++){
             if(mp[i]==0){
                 k--;
             }
