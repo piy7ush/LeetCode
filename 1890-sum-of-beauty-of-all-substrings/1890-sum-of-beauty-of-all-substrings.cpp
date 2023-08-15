@@ -1,8 +1,8 @@
 class Solution {
 public:
 int beauty(vector<int>&alpha){
-    int mf =-1;
-    int lf=1e9;
+    int mf =INT_MIN;
+    int lf=INT_MAX;
     for(int i=0;i<26;i++){
         mf = max(mf,alpha[i]);
         if(alpha[i]>=1){
