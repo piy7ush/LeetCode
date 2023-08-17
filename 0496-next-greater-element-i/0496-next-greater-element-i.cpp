@@ -10,21 +10,16 @@ public:
             }
         }
         vector<int> ans;
-        int i=0;
-        for(auto x:index){
-            cout<<x<<" ";
-        }
         for(auto x:index){
             if(x+1 == nums2.size()) ans.push_back(-1);
             for(int j=x+1;j<nums2.size();j++){
-                if(nums2[j]>nums1[i]){
+                if(nums2[j]>nums2[x]){
                     ans.push_back(nums2[j]);
                     break;
                 }
                 if(j==nums2.size()-1) ans.push_back(-1);
             }
-        
-            i++;
+           
         }
         return ans;
     }
