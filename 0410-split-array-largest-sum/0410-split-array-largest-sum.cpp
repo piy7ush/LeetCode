@@ -1,33 +1,39 @@
 class Solution {
-int countPartitions(vector<int>&arr,int maxSum){
-    int partitions =1;
-    long long subarraysum = 0;
-    for(int i=0;i<arr.size();i++){
-        if(subarraysum+arr[i]<=maxSum){
-            subarraysum+=arr[i];
-        }
-        else{
-            partitions++;
-            subarraysum = arr[i];
-        }
-    }
-    return partitions;
-}
-public:
-    int splitArray(vector<int>& nums, int k) {
-        int low = *max_element(nums.begin(),nums.end());
-        int high = accumulate(nums.begin(),nums.end(),0);
+private:
+    bool ispossible(vector<int>&nums, int k, int mid){
+        int studentcount =1;
+        long long pagesum = 0;
 
-        while(low<=high){
-            int mid = (low+high)/2;
-            int partition = countPartitions(nums,mid);
-            if(partition>k){
-                low = mid+1;
+        for(int i=0;i<nums.size();i++){
+            if(pagesum + nums[i]<=mid){
+                pagesum+=nums[i];
             }
             else{
-                high = mid-1;
+                studentcount++;
+                if(studentcount>k || nums[i]>mid)return false;
+                pagesum = nums[i];
             }
         }
-        return low;
+        return true;
+    }
+public:
+    int splitArray(vector<int>& nums, int k) {
+        int ans =-1;
+        int start = 0;
+        int end = accumulate(nums.begin(),nums.end(),0);
+
+        int mid = (start+end)/2;
+        
+        while(start<=end){
+            if(ispossible(nums,k,mid)){
+                ans = mid;
+                end = mid-1;
+            }
+            else start = mid+1;
+
+            mid = (start+end)/2;
+        }
+        return ans;
+        
     }
 };
